@@ -81,7 +81,7 @@ const BlogInner = () => {
                   <img src="images/man1.jpg" alt="" />
                 </div>
                 <div className="desc">
-                  <div className="name">John Doe</div>
+                  <div className="name">Dhruv Salot</div>
                   <p>
                     An has alterum nominavi. Nam at elitr veritus voluptaria. Cu
                     eum regione tacimates vituperatoribus, ut mutat delenit est.

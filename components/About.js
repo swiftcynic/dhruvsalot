@@ -20,7 +20,7 @@ const About = () => {
           <div className="info-list">
             <ul>
               <li>
-                <strong>Name:</strong> John Doe
+                <strong>Name:</strong> Dhruv Salot
               </li>
               <li>
                 <strong>Age:</strong> 22 Years

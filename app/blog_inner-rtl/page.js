@@ -82,7 +82,7 @@ const BlogInner = () => {
                   <img src="images/man1.jpg" alt="" />
                 </div>
                 <div className="desc">
-                  <div className="name">John Doe</div>
+                  <div className="name">Dhruv Salot</div>
                   <p>
                     مهمتي بسيطة ومتطورة ، لذلك من الممكن أن أصفها ولغة بسيطة
                     ومنمقة. أنا أحب الشعور والتطور من التفوق. أحب الناس بعقل

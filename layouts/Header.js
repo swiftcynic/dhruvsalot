@@ -22,16 +22,16 @@ const Header = ({ dark }) => {
         </a>
         <div className="logo">
           <Link href="/">
-            <img src={`/images/logo${dark ? "-dark" : ""}.png`} alt="logo" />
+            <img src={`./images/logo${dark ? "-dark" : ""}.png`} alt="logo" />
           </Link>
         </div>
         <div className="top-menu">
           <ul>
-            <li className={pathname.includes("home") || pathname == '/' ? "menu-item-has-children active" : "menu-item-has-children"}>
-              <Link href={`/`} className={`lnk`}>
+            <li className={pathname.includes("home") || pathname == '/' ? "active" : ""}>
+              <Link href={`/`}>
                 Home
               </Link>
-              <ul className="sub-menu">
+              {/* <ul className="sub-menu">
                 <li className={pathname.includes("home") || pathname == '/' ? "menu-item active" : "menu-item"}>
                   <Link href="/">Home Default</Link>
                 </li>
@@ -50,7 +50,7 @@ const Header = ({ dark }) => {
                 <li className={pathname.includes("index-onepage-rtl") ? "menu-item active" : "menu-item"}>
                   <Link href="index-onepage-rtl" target="_blank">Home Onepage RTL</Link>
                 </li>
-              </ul>
+              </ul> */}
             </li>
             <li className={pathname.includes("resume") ? "active" : ""}>
               <Link href={`resume${dark ? "-dark" : ""}`} className={`lnk`}>
