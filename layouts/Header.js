@@ -27,8 +27,8 @@ const Header = ({ dark }) => {
         </div>
         <div className="top-menu">
           <ul>
-            <li className={pathname.includes("home") || pathname == '/' ? "active" : ""}>
-              <Link href={`/`}>
+            <li className={pathname.includes("home") || pathname == '/' || pathname == '/dhruvsalot/' ? "active" : ""}>
+              <Link href={`/`} className={`lnk`}>
                 Home
               </Link>
               {/* <ul className="sub-menu">

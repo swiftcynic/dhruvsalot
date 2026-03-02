@@ -1,3 +1,6 @@
+import emailjs from "@emailjs/browser";
+
+
 const ContactsInfo = () => {
   return (
     <div className="section contacts section_" id="section-contacts">
@@ -11,16 +14,16 @@ const ContactsInfo = () => {
               <span className="ion ion-android-phone-portrait" />
             </div>
             <div className="name">Phone</div>
-            <p>+ (231) 456 67 89</p>
-          </div>
+            <p>+61 42 107 6292</p>
+          </div>  
           <div className="service-item">
             <div className="icon">
               <span className="ion ion-email" />
             </div>
             <div className="name">Email</div>
             <p>
-              <a href="mailto:steve-pearson@gmail.com">
-                steve-pearson@gmail.com
+              <a href="mailto:dhruv.salot@outlook.com">
+                dhruv.salot@outlook.com
               </a>
             </p>
           </div>
@@ -29,7 +32,7 @@ const ContactsInfo = () => {
               <span className="ion ion-ios-location" />
             </div>
             <div className="name">Address</div>
-            <p>2621 W Pico Blvd, Los Angeles</p>
+            <p>Rosehill, New South Wales, Australia, 2142</p>
           </div>
         </div>
         <div className="contact_form">
@@ -47,9 +50,9 @@ const ContactsInfo = () => {
                 defaultValue={""}
               />
             </div>
-            <a href="#" className="btn fill" data-text="Send Message">
+            <button type="submit" className="btn fill" data-text="Send Message">
               Send Message
-            </a>
+            </button>
           </form>
           <div className="alert-success">
             <p>
