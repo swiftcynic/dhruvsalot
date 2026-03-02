@@ -1,3 +1,5 @@
+"use client";
+
 import ContactsInfo from "@/components/ContactsInfo";
 import PageBanner from "@/components/PageBanner";
 import GlitcheLayout from "@/layouts/GlitcheLayout";

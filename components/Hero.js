@@ -8,7 +8,7 @@ const Hero = ({ mouse }) => {
     const timerId = setTimeout(() => {
       // Perform action after the delay
       new Typed(".typed-subtitle", {
-        strings: ["Based in Sydney.", "Masters in Data Science @ UNSW.", "Bachelors in Computer Science @ DJ Sanghvi.", "Data Scientist.", "Software Engineer.", "Tech Enthusiast."],
+        strings: ["Based in Sydney.", "Masters in Data Science @ UNSW.", "Bachelors in Computer Science @ DJ Sanghvi."],
         loop: true,
         typeSpeed: 60,
         backSpeed: 30,
@@ -20,7 +20,7 @@ const Hero = ({ mouse }) => {
   }, []);
   
   return (
-    <div className="section started" style={{ height: "96vh" }}>
+    <div className="section started" style={{ height: "90vh" }}>
       <div className="centrize full-width">
         <div className="vertical-center">
           <div className="started-content">

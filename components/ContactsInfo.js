@@ -1,12 +1,41 @@
 import emailjs from "@emailjs/browser";
+import { useState } from "react";
 
 
 const ContactsInfo = () => {
+
+  const [from_name, setFromName] = useState("");
+  const [title, setTitle] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const emailContent = {
+    from_name,
+    email,
+    title,
+    message
+  };
+
+  const submitInfo = (e) => {
+    console.log(from_name, email, title, message);
+    emailjs
+      .send("service_4k6zmce", "template_1zbgna8", emailContent, "WWYO6LLp_c_HB7zMU")
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    e.preventDefault();
+  }
+
   return (
     <div className="section contacts section_" id="section-contacts">
       <div className="content">
         <div className="title">
-          <div className="title_inner">Contacts</div>
+          <div className="title_inner">Contact Me</div>
         </div>
         <div className="service-items">
           <div className="service-item">
@@ -14,8 +43,8 @@ const ContactsInfo = () => {
               <span className="ion ion-android-phone-portrait" />
             </div>
             <div className="name">Phone</div>
-            <p>+61 42 107 6292</p>
-          </div>  
+            <p>+61 (04) 2107 6292</p>
+          </div>
           <div className="service-item">
             <div className="icon">
               <span className="ion ion-email" />
@@ -38,19 +67,44 @@ const ContactsInfo = () => {
         <div className="contact_form">
           <form id="cform" method="post">
             <div className="group-val">
-              <input type="text" name="name" placeholder="Name" />
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                onChange={(e) => setFromName(e.target.value)}
+                required
+              />
             </div>
             <div className="group-val">
-              <input type="text" name="email" placeholder="Email" />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="group-val ct-gr">
+              <input
+                type="text"
+                name="title"
+                placeholder="Title"
+                onChange={(e) => setTitle(e.target.value)}
+              />
             </div>
             <div className="group-val ct-gr">
               <textarea
                 name="message"
                 placeholder="Message"
-                defaultValue={""}
+                onChange={(e) => setMessage(e.target.value)}
               />
             </div>
-            <button type="submit" className="btn fill" data-text="Send Message">
+            <button
+              type="submit"
+              className="btn fill"
+              data-text="Send Message"
+              onClick={submitInfo}
+            >
               Send Message
             </button>
           </form>

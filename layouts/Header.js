@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const Header = ({ dark }) => {
   const [toggle, setToggle] = useState(false);
@@ -22,7 +23,7 @@ const Header = ({ dark }) => {
         </a>
         <div className="logo">
           <Link href="/">
-            <img src={`./images/logo${dark ? "-dark" : ""}.png`} alt="logo" />
+            <Image priority src={`./images/logo${dark ? "-dark" : ""}.svg`} alt="Logo" width={3600} height={2200} />
           </Link>
         </div>
         <div className="top-menu">
