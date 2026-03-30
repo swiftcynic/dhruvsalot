@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect } from "react";
 
-const PageBanner = ({ pageName, pageLink, dark }) => {
+const PageBanner = ({ pageName, pageLink, dark, scrollFallback }) => {
   useEffect(() => {
     var sections = document.querySelectorAll(".section");
     sections.forEach(function (section) {
@@ -42,12 +42,31 @@ const PageBanner = ({ pageName, pageLink, dark }) => {
               </p>
             </div>
             <span className="typed-bread" />
+
+            {/* if a custom scrollFallback is provided, render it here slightly below the title */}
+            {scrollFallback ? (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: 40,
+                }}
+              >
+                {scrollFallback}
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
-      <a href="#" className="mouse_btn">
-        <span className="ion ion-mouse mouse" />
-      </a>
+
+      {/* render default scroll-downs only when no scrollFallback was provided */}
+      {!scrollFallback && (
+        <div className="scroll-downs">
+          <a href="#next-section" className="mouse_btn">
+            <span className="ion ion-mouse mouse" />
+          </a>
+        </div>
+      )}
     </div>
   );
 };

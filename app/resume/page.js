@@ -1,7 +1,5 @@
-import About from "@/components/About";
+"use client";
 import PageBanner from "@/components/PageBanner";
-import Services from "@/components/Services";
-import Skills from "@/components/Skills";
 import GlitcheLayout from "@/layouts/GlitcheLayout";
 
 import dynamic from "next/dynamic";
@@ -9,15 +7,21 @@ const Clients = dynamic(() => import("@/components/Clients"), {
   ssr: false,
 });
 
-const Resume = () => {
+const ResumePage = () => {
   return (
     <GlitcheLayout>
-      <PageBanner pageLink={"resume"} pageName={"Resume"} />
-      <About />
-      <Skills />
-      <Services />
-      <Clients />
+      <PageBanner 
+        pageLink={"resume"}
+        pageName={"Resume"}
+        scrollFallback={
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 24 }}>
+            <a href="/DHRUV%20SALOT.pdf" download className="download-btn">
+              Download Resume (PDF)
+            </a>
+          </div>
+        }
+      />
     </GlitcheLayout>
   );
 };
-export default Resume;
+export default ResumePage;

@@ -281,6 +281,21 @@ a.btn:hover,
   border: 1px solid #f26b38;
 }
 
+.download-btn {
+  padding: 12px 24px;
+  font-size: 12px;
+  background-color: #f26b38;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #f26b38;
+}
+
+.download-btn:hover {
+  background-color: #f26b38;
+  color: #fff;
+  border: 1px solid #f26b38;
+}
+
 /* 7. Preloader */
 .preloader {
   width: 100%;

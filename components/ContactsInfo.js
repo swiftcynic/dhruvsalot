@@ -19,7 +19,7 @@ const ContactsInfo = () => {
   };
 
   const submitInfo = (e) => {
-    console.log(from_name, email, title, message);
+    e.preventDefault();
     emailjs
       .send("service_4k6zmce", "template_1zbgna8", emailContent, "WWYO6LLp_c_HB7zMU")
       .then(
@@ -30,7 +30,7 @@ const ContactsInfo = () => {
           console.log(error.text);
         }
       );
-    e.preventDefault();
+      window.location.reload();
   }
 
   return (

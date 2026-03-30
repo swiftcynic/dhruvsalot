@@ -23,7 +23,7 @@ const Header = ({ dark }) => {
         </a>
         <div className="logo">
           <Link href="/">
-            <Image priority src={`./images/logo${dark ? "-dark" : ""}.svg`} alt="Logo" width={3600} height={2200} />
+            <Image priority src={`./images/logo.svg`} alt="Logo" width={3600} height={2200} />
           </Link>
         </div>
         <div className="top-menu">
@@ -53,23 +53,23 @@ const Header = ({ dark }) => {
                 </li>
               </ul> */}
             </li>
-            <li className={pathname.includes("resume") ? "active" : ""}>
-              <Link href={`resume${dark ? "-dark" : ""}`} className={`lnk`}>
-                Resume
-              </Link>
-            </li>
             <li className={pathname.includes("portfolio") ? "active" : ""}>
-              <Link href={`portfolio${dark ? "-dark" : ""}`} className="lnk">
+              <Link href={`portfolio`} className="lnk">
                 Portfolio
               </Link>
             </li>
             <li className={pathname.includes("blog") ? "active" : ""}>
-              <Link href={`blog${dark ? "-dark" : ""}`} className="lnk">
+              <Link href={`blog`} className="lnk">
                 Blog
               </Link>
             </li>
+            <li className={pathname.includes("resume") ? "active" : ""}>
+              <Link href={`resume`} className={`lnk`}>
+                Resume
+              </Link>
+            </li>
             <li className={pathname.includes("contacts") ? "active" : ""}>
-              <Link href={`contacts${dark ? "-dark" : ""}`} className="btn">
+              <Link href={`contacts`} className="btn">
                 Contacts
               </Link>
             </li>
