@@ -24,14 +24,21 @@ const Preloader = () => {
     interface FadeElement extends HTMLElement {}
 
     function fadeOut(element: FadeElement | null, duration: number, callback?: FadeCallback): void {
+      // If element doesn't exist, immediately invoke callback and return to avoid runtime errors
+      if (!element) {
+        if (typeof callback === "function") callback();
+        return;
+      }
+
       var opacity: number = 1;
       var interval: number = 1000 / 60; // 60 frames per second
       var step: number = opacity / (duration / interval);
 
-      function updateOpacity(): void {
+      var fadeInterval: number = window.setInterval(function updateOpacity(): void {
         opacity -= step;
-        // cast style to any to preserve original JS behavior of assigning a number
-        ((element as FadeElement).style as any).opacity = opacity;
+        if (opacity < 0) opacity = 0;
+        // assign a string to style.opacity to avoid type issues
+        (element.style as any).opacity = String(opacity);
 
         if (opacity <= 0) {
           clearInterval(fadeInterval);
@@ -39,17 +46,14 @@ const Preloader = () => {
             callback();
           }
         }
-      }
-
-      var fadeInterval: number = window.setInterval(updateOpacity, interval);
+      }, interval);
     }
   }, []);
 
   const [text, setText] = useState("loading ...");
   useEffect(() => {
-    window.location.pathname.includes("rtl")
-      ? setText("جار التحميل...")
-      : "loading ...";
+    // Ensure we actually update the state depending on RTL in the pathname
+    setText(window.location.pathname.includes("rtl") ? "جار التحميل..." : "loading ...");
   }, []);
 
   return (
