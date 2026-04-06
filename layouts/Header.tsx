@@ -55,7 +55,7 @@ const Header = () => {
             </li>
             <li className={pathname.includes("contacts") ? "active" : ""}>
               <Link href={`contacts`} className="btn">
-                Contacts
+                Contact Me
               </Link>
             </li>
           </ul>

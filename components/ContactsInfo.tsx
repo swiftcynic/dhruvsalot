@@ -44,7 +44,7 @@ const ContactsInfo = () => {
           console.log(error.text);
           setSending(false);
           // you can show a UI error here
-          toast.error("Failed to send message. Please try again later.");
+          toast.error("Failed to send message. Please try again later.", { position: "top-center" });
         }
       );
   };
