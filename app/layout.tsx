@@ -5,7 +5,8 @@ import "@/public/css/glitche-basic.css";
 import "@/public/css/glitche-layout.css"
 import "@/public/css/ionicons.css";
 import "@/public/css/magnific-popup.css";
-// import "@/public/css/template-colors/orange.css";
+
+import { Toaster } from "@/components/ui/sonner";
 import State from "../context/context";
 import Preloader from "@/layouts/Preloader";
 import { cn } from "@/lib/utils";
@@ -18,6 +19,7 @@ const robotoMono = Roboto_Mono({
   variable: "--font-roboto",
   display: "swap",
 });
+
 export const metadata = {
   title: "Dhruv (swiftcynic) - Portfolio",
   description: "Welcome to my portfolio website showcasing my projects and skills.",
@@ -33,7 +35,8 @@ export default function RootLayout({
       <body className={robotoMono.variable}>
         {/* Preloader */}
         <Preloader />
-        <State>{children} </State>
+        <State>{children}</State>
+        <Toaster />
       </body>
     </html>
   );

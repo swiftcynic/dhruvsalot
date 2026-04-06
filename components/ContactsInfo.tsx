@@ -2,6 +2,7 @@
 
 import emailjs from "@emailjs/browser";
 import { useState, useEffect } from "react";
+import { toast } from "sonner";
 
 const ContactsInfo = () => {
   const [from_name, setFromName] = useState("");
@@ -35,6 +36,7 @@ const ContactsInfo = () => {
           console.log(result.text);
           setSending(false);
           setSuccess(true);
+          toast.success("Message sent successfully!", { position: "top-center" });
           // clear form
           setFromName("");
           setEmail("");
@@ -45,40 +47,12 @@ const ContactsInfo = () => {
           console.log(error.text);
           setSending(false);
           // you can show a UI error here
-          alert("Failed to send message. Please try again later.");
+          toast.error("Failed to send message. Please try again later.");
         }
       );
   };
 
   // Create a portal toast appended to document.body when `success` becomes true.
-  useEffect(() => {
-    if (!success) return;
-    const node = document.createElement("div");
-    node.id = "contact-success-portal";
-    Object.assign(node.style, {
-      position: "fixed",
-      top: "20px",
-      right: "20px",
-      background: "#e6ffed",
-      color: "#0b6b2d",
-      padding: "12px 16px",
-      borderRadius: "6px",
-      boxShadow: "0 6px 18px rgba(0,0,0,0.12)",
-      zIndex: "2147483647",
-      fontFamily: "inherit",
-    });
-    node.textContent = "Message sent — thanks!";
-    document.body.appendChild(node);
-    const t = window.setTimeout(() => {
-      node.remove();
-      // reset success flag so UI inside component can hide too
-      setSuccess(false);
-    }, 4000);
-    return () => {
-      clearTimeout(t);
-      node.remove();
-    };
-  }, [success]);
 
   return (
     <div className="section contacts section_" id="section-contacts">
@@ -110,7 +84,7 @@ const ContactsInfo = () => {
               <span className="ion ion-ios-location" />
             </div>
             <div className="name">Address</div>
-            <p>Rosehill, New South Wales, Australia, 2142</p>
+            <p>North Parramatta, New South Wales, Australia, 2142</p>
           </div>
         </div>
         <div className="contact_form">
@@ -163,15 +137,7 @@ const ContactsInfo = () => {
               {sending ? "Sending..." : "Send Message"}
             </button>
           </form>
-          {success && (
-            <div className="alert-success" style={{ display: "block" }}>
-              <p>
-                Thanks, your message is sent successfully. I will contact you
-                shortly!
-              </p>
-            </div>
-          )}
-          {/* Toast rendered via portal to document.body when success=true */}
+          
         </div>
       </div>
     </div>
