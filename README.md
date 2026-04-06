@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dhruv (swiftcynic) — Portfolio
 
-## Getting Started
+Personal portfolio website built with Next.js and TypeScript. Shows projects, resume, and a contact form that uses EmailJS.
 
-First, run the development server:
+Live: (your deployed URL / custom domain)
 
+---
+
+## Features
+- Responsive portfolio, resume and contact sections
+- Preloader with fade animation
+- Contact form using EmailJS
+- Image galleries and popups
+- Lightweight, static-ready Next.js app
+
+## Tech stack
+- Next.js (App Router)
+- React 19, TypeScript
+- EmailJS (@emailjs/browser)
+- CSS template files in `public/css` (no Tailwind required to run)
+- Libraries: isotope-layout, fslightbox-react, react-player, typed.js
+
+## Repo structure (high level)
+- `app/` — Next.js app routes and pages
+- `components/` — React components (Hero, About, ContactsInfo, Popups, ...)
+- `layouts/` — shared layouts (Preloader, Header, Footer)
+- `public/` — static assets, CSS, fonts, images
+- `scripts/`, `utility/` — helpers and small utilities
+
+## Local development
+
+Prerequisites
+- Node 18+ and npm (or yarn / pnpm)
+
+Install
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run dev
+```bash
+npm run dev
+# open http://localhost:3000
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Build
+```bash
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## EmailJS / Environment
+Do not commit your EmailJS keys to source control. Create a `.env.local` with values like:
+```env
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=service_xxx
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=template_xxx
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+```
+Use these env vars in `ContactsInfo` (browser code) as `process.env.NEXT_PUBLIC_*`.
 
-## Learn More
+## Deployment
+Recommended: Vercel (zero-config for Next.js). For GitHub Pages you can use `next export` and publish the `out/` folder but verify no server-only APIs are required.
 
-To learn more about Next.js, take a look at the following resources:
+## Troubleshooting
+- Preloader stuck: check Console for errors and ensure `.preloader .pre-inner` exists. The app hides content until `body.loaded` is added.
+- Contact form: check browser Console for EmailJS success/error logs and network requests. If the UI confirmation is hidden by CSS, a portal is used to render the toast directly into `document.body`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
+- Open issues for bugs or improvements.
+- Make PRs to `main` with a short description and testing steps.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
+Add your preferred license (MIT recommended).
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you want, I can:
+- Add a deploy script for GitHub Pages
+- Move the EmailJS configuration into `.env.local` and update the component to read from env
+- Add CI/CD (Vercel) instructions and a badge
