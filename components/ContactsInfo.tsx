@@ -1,7 +1,7 @@
 "use client";
 
 import emailjs from "@emailjs/browser";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const ContactsInfo = () => {
@@ -10,7 +10,6 @@ const ContactsInfo = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [sending, setSending] = useState(false);
-  const [success, setSuccess] = useState(false);
 
   const emailContent = {
     from_name,
@@ -22,7 +21,6 @@ const ContactsInfo = () => {
   const submitInfo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSending(true);
-    setSuccess(false);
 
     emailjs
       .send(
@@ -35,7 +33,6 @@ const ContactsInfo = () => {
         (result) => {
           console.log(result.text);
           setSending(false);
-          setSuccess(true);
           toast.success("Message sent successfully!", { position: "top-center" });
           // clear form
           setFromName("");
