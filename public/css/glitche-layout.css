@@ -27,18 +27,16 @@ header {
   position: fixed;
   left: 0;
   top: 30px;
-  height: auto;
-  padding-bottom: 20px;
   width: 100%;
   z-index: 100;
   text-align: right;
   background: #ffffff;
   opacity: 1;
   visibility: visible;
-  transition: all 0.1s ease 0s;
-  -moz-transition: all 0.1s ease 0s;
-  -webkit-transition: all 0.1s ease 0s;
-  -o-transition: all 0.1s ease 0s;
+  transition: all 0.6s ease 0s;
+  -moz-transition: all 0.6s ease 0s;
+  -webkit-transition: all 0.6s ease 0s;
+  -o-transition: all 0.6s ease 0s;
 }
 
 header.active {
@@ -66,26 +64,19 @@ header.active .menu-btn span {
 }
 
 header.active .head-top .top-menu {
-  position: absolute;
-  display: flex;
-  top: 120px;
-  left: 0;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
+  position: relative;
+  top: 0;
+  left: 50%;
+  margin-left: -100px;
+  width: 200px;
   height: auto;
   text-align: center;
   opacity: 1 !important;
   visibility: visible !important;
-  background: #ffffff;
-  border-bottom: 1px solid #f26b38;
 }
 
 header.active .head-top .top-menu ul li {
-  display: flex;
-  width: 100vw;
-  align-items: center;
-  justify-content: center;
+  display: block;
   margin: 30px 0;
 }
 
@@ -197,7 +188,7 @@ header .head-top .top-menu ul li.active > .btn {
 
 header .logo {
   padding-top: 0;
-  max-width: 144px;
+  max-width: 120px;
   float: left;
   font-size: 0
 }
@@ -389,7 +380,7 @@ header .head-top .top-menu ul li:hover > .children {
   text-align: center;
   position: relative;
   line-height: 18px;
-  font-size: 36px;
+  font-size: 13px;
   color: #141414;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -397,6 +388,10 @@ header .head-top .top-menu ul li:hover > .children {
   -moz-transition: all 0.3s ease 0s;
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
+  box-shadow: inset 0 -6px 0px #ede574;
+  -moz-box-shadow: inset 0 -6px 0px #ede574;
+  -webkit-box-shadow: inset 0 -6px 0px #ede574;
+  -khtml-box-shadow: inset 0 -6px 0px #ede574;
 }
 
 /* 3. Started */
@@ -415,7 +410,7 @@ header .head-top .top-menu ul li:hover > .children {
 }
 
 .section.started .started-content .h-title {
-  font-size: 96px;
+  font-size: 68px;
   font-family: var(--font-roboto);
   color: #141414;
   font-weight: 700;
@@ -723,13 +718,13 @@ header .head-top .top-menu ul li:hover > .children {
   display: inline-block;
   vertical-align: top;
   width: 28%;
-  margin: 50px 0% 0 0;
+  margin: 50px 4% 0 0;
   text-align: left;
 }
 
 @media (max-width: 840px) {
   .service-items .service-item {
-    width: 100%;
+    width: 45%;
   }
 }
 
@@ -748,7 +743,7 @@ header .head-top .top-menu ul li:hover > .children {
 
 .service-items .service-item .icon {
   float: left;
-  width: 48px;
+  width: 36px;
   text-align: center;
   font-size: 30px;
   color: #f26b38;
@@ -758,7 +753,7 @@ header .head-top .top-menu ul li:hover > .children {
   .service-items .service-item .icon {
     float: none;
     display: inline-block;
-    vertical-align: left;
+    vertical-align: middle;
   }
 }
 
@@ -979,7 +974,7 @@ header .head-top .top-menu ul li:hover > .children {
 }
 
 .section.contacts .contact_form {
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .section.contacts .alert-success {
@@ -1072,11 +1067,13 @@ footer .soc {
 footer .soc a {
   display: inline-block;
   vertical-align: middle;
-  margin-left: 24px;
+  margin-left: 12px;
 }
 
 footer .soc a .ion {
-  font-size: 28px;
+  font-size: 30px;
+  margin-right: 10px;
+  margin-left: 10px;
   color: #363636;
   transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
@@ -1329,7 +1326,6 @@ a.btn,
   display: inline-block;
   font-family: "Ionicons";
   color: #f26b38;
-  speak: none;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
