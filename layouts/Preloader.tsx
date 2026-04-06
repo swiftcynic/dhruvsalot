@@ -3,10 +3,33 @@ import { useEffect, useState } from "react";
 
 const Preloader = () => {
   useEffect(() => {
+    console.log("[Preloader] mounted");
     var preInner = document.querySelector<HTMLElement>(".preloader .pre-inner");
+
+    // if element exists ensure it starts at full opacity
+    if (preInner) {
+      console.log("[Preloader] found .pre-inner");
+      (preInner.style as any).opacity = "1";
+    } else {
+      console.log("[Preloader] .pre-inner not found");
+    }
+
+    // Fallback: force-hide preloader after 3s in case fade never completes
+    var fallbackHide = window.setTimeout(() => {
+      console.log("[Preloader] fallbackHide running — forcing hide");
+      var preloaderFallback = document.querySelector(".preloader");
+      if (preloaderFallback) {
+        (preloaderFallback as HTMLElement).style.display = "none";
+      }
+      document.body.classList.add("loaded");
+    }, 3000);
 
     // Fade out .pre-inner element
     fadeOut(preInner, 800, function () {
+      console.log("[Preloader] fadeOut completed — hiding preloader");
+      // clear fallback so it doesn't run after successful fade
+      clearTimeout(fallbackHide as number);
+
       // Preload hide
       var preloader = document.querySelector(".preloader");
       if (preloader) {
