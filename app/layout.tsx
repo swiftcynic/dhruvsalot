@@ -1,4 +1,4 @@
-import { Roboto_Mono } from "next/font/google";
+import { Roboto_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import "@/public/css/animate.css";
 import "@/public/css/glitche-basic.css";
@@ -8,6 +8,9 @@ import "@/public/css/magnific-popup.css";
 // import "@/public/css/template-colors/orange.css";
 import State from "../context/context";
 import Preloader from "@/layouts/Preloader";
+import { cn } from "@/lib/utils";
+
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 const robotoMono = Roboto_Mono({
   subsets: ["latin"],
@@ -26,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth">
+    <html lang="en" data-scroll-behavior="smooth" className={cn("font-sans", inter.variable)}>
       <body className={robotoMono.variable}>
         {/* Preloader */}
         <Preloader />
