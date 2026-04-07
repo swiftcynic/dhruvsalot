@@ -31,21 +31,49 @@ const RecentWorks = () => {
   const isotope = useRef<InstanceType<typeof Isotope> | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [filterKey, setFilterKey] = useState("*");
+  // Wait for images inside the container to load before initializing Isotope.
   useEffect(() => {
-    // Initialize Isotope with the actual DOM node instead of a selector string
-    if (!containerRef.current) return;
-    isotope.current = new Isotope(containerRef.current, {
-      itemSelector: ".box-item",
-      // layoutMode: "fitRows",
-      percentPosition: true,
-      masonry: {
-        columnWidth: ".box-item",
-      },
-      transitionDuration: "0.75s",
-    });
+    let cancelled = false;
+
+    function waitForImages(container: HTMLElement) {
+      const imgs = Array.from(container.querySelectorAll('img')) as HTMLImageElement[];
+      if (imgs.length === 0) return Promise.resolve();
+      return Promise.all(
+        imgs.map(
+          (img) =>
+            new Promise<void>((resolve) => {
+              if (img.complete) return resolve();
+              const onDone = () => {
+                img.removeEventListener('load', onDone);
+                img.removeEventListener('error', onDone);
+                resolve();
+              };
+              img.addEventListener('load', onDone);
+              img.addEventListener('error', onDone);
+            })
+        )
+      );
+    }
+
+    const initIsotope = async () => {
+      if (!containerRef.current) return;
+      // wait for images to load to ensure Isotope measures items correctly
+      await waitForImages(containerRef.current);
+      if (cancelled) return;
+      isotope.current = new Isotope(containerRef.current, {
+        itemSelector: '.box-item',
+        percentPosition: true,
+        masonry: { columnWidth: '.box-item' },
+        transitionDuration: '0.75s',
+      });
+      // initial arrangement
+      isotope.current.arrange({ filter: filterKey === '*' ? '*' : `.${filterKey}` });
+    };
+
+    initIsotope();
 
     return () => {
-      // cleanup on unmount
+      cancelled = true;
       isotope.current?.destroy();
       isotope.current = null;
     };
